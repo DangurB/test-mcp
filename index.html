@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow - Boost Your Productivity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2563eb;
+            color: white;
+            padding: 1.5rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .btn {
+            background-color: #fff;
+            color: #2563eb;
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #1e3a8a;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #555;
+        }
+        
+        .cta-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        
+        .cta-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .secondary-btn {
+            background-color: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            padding: 0.9rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .secondary-btn:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3a8a;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            background-color: #dbeafe;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: #2563eb;
+            font-size: 1.8rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+        
+        .testimonials {
+            padding: 5rem 0;
+            background-color: #f1f5f9;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: #dbeafe;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .pricing {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #2563eb;
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background-color: #2563eb;
+            color: white;
+            padding: 0.5rem 2.5rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 1.5rem 0;
+        }
+        
+        .price span {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #64748b;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .cta {
+            padding: 5rem 0;
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background-color: #0f172a;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #2563eb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-btn, .secondary-btn {
+                display: block;
+                margin: 1rem auto;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">FocusFlow</div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#" class="btn">Sign In</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Boost Your Productivity with FocusFlow</h1>
+            <p>The all-in-one productivity app that helps you stay focused, manage tasks efficiently, and achieve your goals with ease. Try FocusFlow today and transform your workflow.</p>
+            <a href="#" class="cta-btn">Start Free Trial</a>
+            <a href="#features" class="secondary-btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Task Management</h3>
+                    <p>Create, organize, and prioritize tasks with our intuitive drag-and-drop interface. Stay on top of your to-do list.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Boost focus and productivity with our built-in Pomodoro timer. Work in focused intervals for maximum efficiency.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Analytics</h3>
+                    <p>Track your productivity patterns and habits with detailed analytics and visualizations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Cross-Device Sync</h3>
+                    <p>Access your tasks and progress from anywhere with seamless synchronization across all your devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Note Taking</h3>
+                    <p>Capture ideas, create checklists, and take meeting notes—all integrated with your tasks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Reminders</h3>
+                    <p>Never miss a deadline with customizable notifications and intelligent reminder suggestions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"FocusFlow has completely transformed how I manage my workday. The Pomodoro timer combined with task management has doubled my productivity!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Marketing Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a freelancer juggling multiple projects, FocusFlow helps me stay organized and meet all my deadlines. The analytics feature is a game-changer."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>Graphic Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've tried dozens of productivity apps, but FocusFlow is the only one that's stuck. It's simple yet powerful, and the cross-device sync is flawless."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">Free</div>
+                    <ul class="features-list">
+                        <li>Basic Task Management</li>
+                        <li>Simple Pomodoro Timer</li>
+                        <li>Daily Progress Reports</li>
+                        <li>Single Device Support</li>
+                        <li>Community Support</li>
+                    </ul>
+                    <a href="#" class="cta-btn">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">POPULAR</div>
+                    <h3>Pro</h3>
+                    <div class="price">$9.99 <span>/month</span></div>
+                    <ul class="features-list">
+                        <li>Advanced Task Management</li>
+                        <li>Customizable Pomodoro Timer</li>
+                        <li>Detailed Analytics</li>
+                        <li>Cross-Device Sync</li>
+                        <li>Note Taking</li>
+                        <li>Email & Chat Support</li>
+                    </ul>
+                    <a href="#" class="cta-btn">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Team</h3>
+                    <div class="price">$19.99 <span>/month</span></div>
+                    <ul class="features-list">
+                        <li>Everything in Pro</li>
+                        <li>Team Task Management</li>
+                        <li>Team Analytics</li>
+                        <li>Collaborative Notes</li>
+                        <li>Admin Controls</li>
+                        <li>Priority Support</li>
+                    </ul>
+                    <a href="#" class="cta-btn">Start Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Boost Your Productivity?</h2>
+            <p>Join thousands of users who have transformed their workflow with FocusFlow. Start your free trial today.</p>
+            <a href="#" class="cta-btn">Get Started — It's Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>FocusFlow</h3>
+                    <p>The all-in-one productivity app that helps you stay focused, manage tasks efficiently, and achieve your goals.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 FocusFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
